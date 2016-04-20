@@ -31,7 +31,7 @@ Button moonTrack,Features,Game;
         moonTrack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(appmenu.this, circular_view.class);
+                Intent intent = new Intent(appmenu.this, compass.class);
                 startActivity(intent);
             }
         });

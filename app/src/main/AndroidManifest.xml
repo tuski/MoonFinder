@@ -22,6 +22,10 @@
             android:name=".circular_view"
             android:label="@string/title_activity_circular_view" >
         </activity>
+        <activity
+            android:name=".compass"
+             >
+        </activity>
     </application>
 
 </manifest>
