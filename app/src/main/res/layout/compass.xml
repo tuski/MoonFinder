@@ -12,19 +12,30 @@
         android:layout_marginTop="20dp"
         android:text="Heading: 0.0" />
 
-    <FrameLayout
+    <AbsoluteLayout
         android:id="@+id/imageViewCompass"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_below="@+id/tvHeading"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/compass_pic"
+        android:background="@drawable/compass_pic">
 
-        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/img_sun"
+            android:background="@drawable/s2"
+            android:layout_x="243dp"
+            android:layout_y="59dp" />
 
-
-
-    </FrameLayout>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/img_moon"
+            android:layout_x="59dp"
+            android:layout_y="242dp"
+            android:background="@drawable/moon"/>
+    </AbsoluteLayout>
 
 
 </RelativeLayout>

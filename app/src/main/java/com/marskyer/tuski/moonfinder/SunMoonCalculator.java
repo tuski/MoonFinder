@@ -536,6 +536,7 @@ package com.marskyer.tuski.moonfinder;
      * Main test program.
      * @param args Not used
      */
+    /*
     public static void main(String[] args) {
         System.out.println("SunMoonCalculator test");
 
@@ -582,6 +583,8 @@ package com.marskyer.tuski.moonfinder;
             exc.printStackTrace();
         }
     }
+    */
+
 }
 
 
