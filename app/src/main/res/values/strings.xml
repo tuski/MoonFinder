@@ -6,4 +6,6 @@
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_features_menu">features_menu</string>
     <string name="title_activity_circular_view">circular_view</string>
+    <string name="title_activity_pictures">pictures</string>
+    <string name="title_activity_show_pictures">show_pictures</string>
 </resources>

@@ -7,35 +7,41 @@
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Heading: 0.0" />
+        android:text="Heading: 0.0"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <AbsoluteLayout
+    <ImageView
         android:id="@+id/imageViewCompass"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_below="@+id/tvHeading"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/compass_pic">
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:background="@drawable/compass_pic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvHeading" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/img_sun"
-            android:background="@drawable/s2"
-            android:layout_x="243dp"
-            android:layout_y="59dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moon_phs_view"
+        android:background="@drawable/p22x"
+        android:layout_below="@+id/imageViewCompass"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="78dp"
+        android:layout_alignLeft="@+id/tvHeading"
+        android:layout_alignStart="@+id/tvHeading" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/img_moon"
-            android:layout_x="59dp"
-            android:layout_y="242dp"
-            android:background="@drawable/moon"/>
-    </AbsoluteLayout>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/moon_dtl_txt"
+        android:layout_alignTop="@+id/moon_phs_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/moon_phs_view"
+        android:layout_toStartOf="@+id/moon_phs_view" />
 
 </RelativeLayout>

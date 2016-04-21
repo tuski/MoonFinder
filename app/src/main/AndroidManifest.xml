@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marskyer.tuski.moonfinder" >
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,9 +23,18 @@
             android:name=".circular_view"
             android:label="@string/title_activity_circular_view" >
         </activity>
+        <activity android:name=".compass" >
+        </activity>
+
+
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <uses-permission android:name="android.permission.INTERNET" />
+
+
         <activity
-            android:name=".compass"
-             >
+            android:name=".show_pictures"
+            android:label="@string/title_activity_show_pictures" >
         </activity>
     </application>
 
