@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previous Day"
+        android:background="@drawable/button_previous_ico"
         android:id="@+id/btn_prvsday"
         android:layout_below="@+id/imageView4"
         android:layout_alignRight="@+id/imageView4"
@@ -30,7 +30,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Day"
+       android:background="@drawable/button_next_ico"
         android:id="@+id/btn_nxtday"
         android:layout_below="@+id/imageView4"
         android:layout_alignRight="@+id/imageView4"

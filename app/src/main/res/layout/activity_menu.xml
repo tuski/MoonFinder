@@ -16,29 +16,36 @@
         android:background="@drawable/witch"
         android:id="@+id/imageView2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="40dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moon Track"
+android:layout_marginBottom="30dp"
+android:background="@drawable/button_track"
         android:id="@+id/btn_mntrack"
         android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="70dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Features"
+
+        android:background="@drawable/button_features_ico"
         android:id="@+id/btn_features"
-        android:layout_below="@+id/btn_mntrack"
-        android:layout_centerHorizontal="true" />
+
+        android:layout_alignTop="@+id/btn_game"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game"
+        android:background="@drawable/button_game_ico"
         android:id="@+id/btn_game"
-        android:layout_below="@+id/btn_features"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/btn_mntrack"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
