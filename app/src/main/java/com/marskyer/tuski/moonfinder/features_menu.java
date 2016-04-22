@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 public class features_menu extends Activity {
-Button phs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen
@@ -22,22 +22,29 @@ Button phs;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_features_menu);
 
-phs= (Button) findViewById(R.id.btn_phase);
 
-
-
-
-
-        phs.setOnClickListener(new View.OnClickListener() {
+        /*
+        added my @Mahedi
+         */
+        Button featureButton = (Button) findViewById(R.id.btn_pic);
+        featureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(features_menu.this, phase_anim.class);
-                startActivity(intent);
+                startGalleryActivity();
             }
         });
 
-    }
 
+    }
+    /*
+    added by @Mahedi
+     */
+    public void startGalleryActivity(){
+        Intent intent = new Intent(features_menu.this, GalleryActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
+
+    }
 
 
 }

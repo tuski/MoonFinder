@@ -4,4 +4,6 @@
         <color name="frameColor">#cff0</color>
         <color name="highlight">#3fff</color>
         <color name="ordinaryday">#0fff</color>
+        <color name="blue">#00abea</color>
+        <color name="white">#ffffff</color>
     </resources>

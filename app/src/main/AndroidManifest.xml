@@ -31,6 +31,10 @@
         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
         <uses-permission android:name="android.permission.INTERNET" />
 
+        <!-- mahedi-->
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
         <activity
             android:name=".show_pictures"
             android:label="@string/title_activity_show_pictures" >
@@ -43,6 +47,11 @@
             android:name=".phase_anim"
             android:label="@string/title_activity_phase_anim" >
         </activity>
+
+        <activity
+            android:name=".GalleryActivity"
+            android:label="@string/title_activity_gallery" />
+        <activity android:name=".ImageDetailActivity"></activity>
     </application>
 
 </manifest>
