@@ -24,4 +24,5 @@
     <string name="settings_title">Settings</string>
     <string name="pref_weekstart1">A week starts on Monday</string>
     <string name="pref_weekstart1_info">Leave unchecked for Sunday</string>
+    <string name="title_activity_phase_anim">phase_anim</string>
 </resources>

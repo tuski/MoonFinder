@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity android:name=".splash" >
@@ -38,6 +38,10 @@
         <activity
             android:name=".phase_view"
             android:label="@string/title_activity_phase_view" >
+        </activity>
+        <activity
+            android:name=".phase_anim"
+            android:label="@string/title_activity_phase_anim" >
         </activity>
     </application>
 

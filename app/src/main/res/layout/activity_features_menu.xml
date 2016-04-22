@@ -26,8 +26,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Story"
-            android:id="@+id/btn_story" />
+            android:text="Watch Moon Phase"
+            android:id="@+id/btn_phase" />
 
         <Button
             android:layout_width="wrap_content"
