@@ -3,6 +3,7 @@
     package="com.marskyer.tuski.moonfinder" >
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,15 +27,17 @@
         <activity android:name=".compass" >
         </activity>
 
-
         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
         <uses-permission android:name="android.permission.INTERNET" />
-
 
         <activity
             android:name=".show_pictures"
             android:label="@string/title_activity_show_pictures" >
+        </activity>
+        <activity
+            android:name=".phase_view"
+            android:label="@string/title_activity_phase_view" >
         </activity>
     </application>
 

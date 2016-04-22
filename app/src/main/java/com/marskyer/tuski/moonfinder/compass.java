@@ -3,6 +3,7 @@ package com.marskyer.tuski.moonfinder;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
@@ -15,17 +16,25 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class compass extends Activity implements SensorEventListener {
 
     // define the display assembly compass picture
+    ImageButton btnnxt;
     private ImageView image;
     private TextView txtvw;
     Geocoder geocoder;
@@ -33,8 +42,18 @@ public class compass extends Activity implements SensorEventListener {
     List<Address> user = null;
     double lat;
     double lng;
-    SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-    SharedPreferences.Editor editor = pref.edit();
+    int az;
+    final double RAD_TO_DEG = 180.0 / Math.PI;
+
+    final double DEG_TO_RAD = 1.0 / RAD_TO_DEG;
+    final double AU = 149597870.691;
+    Calendar cal = Calendar.getInstance();
+    int year = cal.get(Calendar.YEAR), month =1+ cal.get(Calendar.MONTH), day = cal.get(Calendar.DAY_OF_MONTH), h = 7, m = 30, s = 0;
+    double obsLon = 88.63 * DEG_TO_RAD, obsLat = 24.36 * DEG_TO_RAD;
+
+   // SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+   //SharedPreferences.Editor editor = pref.edit();
+    //SharedPreferences.Editor editor = settings.edit();
     // record the compass picture angle turned
     private float currentDegree = 0f;
 
@@ -42,17 +61,35 @@ public class compass extends Activity implements SensorEventListener {
     private SensorManager mSensorManager;
 
     TextView tvHeading;
+   // Button  btn = (Button) findViewById(R.id.btnnxt);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //full screen
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compass);
 
         // our compass image
         image = (ImageView) findViewById(R.id.imageViewCompass);
         txtvw = (TextView) findViewById(R.id.moon_dtl_txt);
+        btnnxt= (ImageButton) findViewById(R.id.btnnxt);
 
+btnnxt.setBackgroundResource(R.drawable.px01);
 
+        btnnxt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(compass.this, circular_view.class);
+                startActivity(intent);
+                // do whatever we wish!
+            }
+        });
         //location
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
@@ -68,9 +105,12 @@ public class compass extends Activity implements SensorEventListener {
                 try {
                     user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                     //editor.putFloat("key_name3", "float value");
-                    lat=(double)user.get(0).getLatitude();
+                    lat = (double)user.get(0).getLatitude();
                     lng=(double)user.get(0).getLongitude();
-                    System.out.println(" DDD lat: " +lat+",  longitude: "+lng);
+                    //editor.putFloat("latitude", (float) lat);
+                    //editor.putFloat("longitude", (float) lng); // getting Float
+                    //editor.commit();
+                  //  System.out.println(" DDD lat: " + lat + ",  longitude: " + lng);
 
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -86,68 +126,93 @@ public class compass extends Activity implements SensorEventListener {
 
 
 
+          //  lat=pref.getFloat("latitude", Float.parseFloat(""));
+       // lng=pref.getFloat("longitude", Float.parseFloat(""));
 
 
-
-         final double RAD_TO_DEG = 180.0 / Math.PI;
+        final double RAD_TO_DEG = 180.0 / Math.PI;
 
         /** Degrees to radians. */
         final double DEG_TO_RAD = 1.0 / RAD_TO_DEG;
         final double AU = 149597870.691;
+        Calendar cal = Calendar.getInstance();
+
+
         try {
-            int year = 2016, month = 4, day = 18, h = 7, m = 30, s = 0;
-            double obsLon = 86 * DEG_TO_RAD, obsLat = 24 * DEG_TO_RAD;
+            int year = cal.get(Calendar.YEAR), month =1+ cal.get(Calendar.MONTH), day = cal.get(Calendar.DAY_OF_MONTH), h = cal.get(Calendar.HOUR), m = cal.get(Calendar.MINUTE), s = 0;
+            double obsLon = lng * DEG_TO_RAD, obsLat = lat * DEG_TO_RAD;
             SunMoonCalculator smc = new SunMoonCalculator(year, month, day, h, m, s, obsLon, obsLat);
 
             smc.calcSunAndMoon();
 
-            txtvw.setText("Moon\n Az: " + (float) (smc.moonAz * RAD_TO_DEG) + "º\nEl: " + (float) (smc.moonEl * RAD_TO_DEG) + "º\nDist: "+(float) (smc.moonDist * AU)+"\nAge: "+(float) (smc.moonAge)+" days"+"\nRise: "+SunMoonCalculator.getDateAsString(smc.moonRise)+"\nSet: "+SunMoonCalculator.getDateAsString(smc.moonSet)+"\nLat:"+lat+"\nlong:"+lng);
-
-/*
-            System.out.println("Sun");
-            System.out.println(" Az:      "+(float) (smc.sunAz * RAD_TO_DEG)+"º");
-            System.out.println(" El:      "+(float) (smc.sunEl * RAD_TO_DEG)+"º");
-            System.out.println(" Dist:    "+(float) (smc.sunDist)+" AU");
-            System.out.println(" Rise:    "+SunMoonCalculator.getDateAsString(smc.sunRise));
-            System.out.println(" Set:     "+SunMoonCalculator.getDateAsString(smc.sunSet));
-            System.out.println(" Transit: "+SunMoonCalculator.getDateAsString(smc.sunTransit)+" (max. elev. "+(float) (smc.sunTransitElev * RAD_TO_DEG)+"º)");
-            System.out.println("Moon");
-            System.out.println(" Az:      "+(float) (smc.moonAz * RAD_TO_DEG)+"º");
-            System.out.println(" El:      "+(float) (smc.moonEl * RAD_TO_DEG)+"º");
-            System.out.println(" Dist:    "+(float) (smc.moonDist * AU)+" km");
-            System.out.println(" Age:     "+(float) (smc.moonAge)+" days");
-            System.out.println(" Rise:    "+SunMoonCalculator.getDateAsString(smc.moonRise));
-            System.out.println(" Set:     "+SunMoonCalculator.getDateAsString(smc.moonSet));
-            System.out.println(" Transit: "+SunMoonCalculator.getDateAsString(smc.moonTransit)+" (max. elev. "+(float) (smc.moonTransitElev * RAD_TO_DEG)+"º)");
-
-            smc.setTwilight(SunMoonCalculator.TWILIGHT.TWILIGHT_ASTRONOMICAL);
-            smc.calcSunAndMoon();
-
-            System.out.println("");
-            System.out.println("Astronomical twilights:");
-            System.out.println("Sun");
-            System.out.println(" Rise:    "+SunMoonCalculator.getDateAsString(smc.sunRise));
-            System.out.println(" Set:     "+SunMoonCalculator.getDateAsString(smc.sunSet));
-            System.out.println("Moon");
-            System.out.println(" Rise:    "+SunMoonCalculator.getDateAsString(smc.moonRise));
-            System.out.println(" Set:     "+SunMoonCalculator.getDateAsString(smc.moonSet));
-*/
-            // Expected accuracy in over 1800 - 2200:
-            // - Sun: 0.005 deg or 20 arcsec. 1-2s in rise/set/transit times.
-            // - Mon: 0.02 deg or better. 10s or better in rise/set/transit times.
-            //        In most of the cases the actual accuracy in the Moon will be better, but it is not guaranteed.
+            txtvw.setText("Moon\n Az: " + (float) (smc.moonAz * RAD_TO_DEG) + "º\nEl: " + (float) (smc.moonEl * RAD_TO_DEG) + "º\nDist: " + (float) (smc.moonDist * AU) + "\nAge: " + (float) (smc.moonAge) + " days" + "\nRise: " + SunMoonCalculator.getDateAsString(smc.moonRise) + "\nSet: " + SunMoonCalculator.getDateAsString(smc.moonSet) + "\nLat:" + lat + "\nlong:" + lng);
+            az= (int) (smc.moonAz * RAD_TO_DEG);
         } catch (Exception exc) {
             exc.printStackTrace();
         }
 
+        Toast error_toast = Toast.makeText(getApplicationContext(), "az:"+az, Toast.LENGTH_SHORT);
+        error_toast.show();
 
 
-        int az=185;
+        if(az>0 && az<=15)
+        image.setImageResource(R.drawable.c1);
 
-        if(az==180)
-        image.setImageResource(R.drawable.compass_180);
-        else
-            image.setImageResource(R.drawable.compass_185);
+        else if(az>15 && az<=30)
+            image.setImageResource(R.drawable.c2);
+        else if(az>30 && az<=45)
+            image.setImageResource(R.drawable.c3);
+        else if(az>45 && az<=60)
+            image.setImageResource(R.drawable.c4);
+
+        else if(az>60 && az<=75)
+            image.setImageResource(R.drawable.c5);
+        else if(az>75 && az<=90)
+            image.setImageResource(R.drawable.c6);
+        else if(az>90 && az<=105)
+            image.setImageResource(R.drawable.c7);
+        else if(az>105 && az<=120)
+            image.setImageResource(R.drawable.c8);
+
+        else if(az>120 && az<=135)
+            image.setImageResource(R.drawable.c9);
+        else if(az>135 && az<=150)
+            image.setImageResource(R.drawable.c10);
+        else if(az>150 && az<=165)
+            image.setImageResource(R.drawable.c11);
+        else if(az>165 && az<=180)
+            image.setImageResource(R.drawable.c12);
+
+        else if(az>180 && az<=195)
+            image.setImageResource(R.drawable.c13);
+        else if(az>195 && az<=210)
+            image.setImageResource(R.drawable.c14);
+        else if(az>210 && az<=225)
+            image.setImageResource(R.drawable.c15);
+        else if(az>225 && az<=240)
+            image.setImageResource(R.drawable.c16);
+
+        else if(az>240 && az<=255)
+            image.setImageResource(R.drawable.c17);
+        else if(az>255 && az<=270)
+            image.setImageResource(R.drawable.c18);
+        else if(az>270 && az<=285)
+            image.setImageResource(R.drawable.c19);
+        else if(az>285 && az<=300)
+            image.setImageResource(R.drawable.c20);
+
+        else if(az>300 && az<=315)
+            image.setImageResource(R.drawable.c21);
+        else if(az>315 && az<=330)
+            image.setImageResource(R.drawable.c22);
+        else if(az>330 && az<=345)
+            image.setImageResource(R.drawable.c23);
+        else if(az>345 && az<=360)
+            image.setImageResource(R.drawable.c24);
+
+
+
+
 
         // TextView that will tell the user what degree is he heading
         tvHeading = (TextView) findViewById(R.id.tvHeading);
