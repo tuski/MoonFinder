@@ -25,4 +25,14 @@
     <string name="pref_weekstart1">A week starts on Monday</string>
     <string name="pref_weekstart1_info">Leave unchecked for Sunday</string>
     <string name="title_activity_phase_anim">phase_anim</string>
+
+   <!-- added by @Mahedi-->
+    <string name="title_activity_gallery">GalleryActivity</string>
+    <string-array name="image_ids">
+        <item>@drawable/nightskhy</item>
+        <item>@drawable/splash</item>
+        <item>@drawable/witch</item>
+
+    </string-array>
+
 </resources>
