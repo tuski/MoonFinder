@@ -18,6 +18,7 @@ public class azimuth_view extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_azimuth_view);
+        //try
     }
 
 
