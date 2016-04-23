@@ -34,5 +34,12 @@
         <item>@drawable/witch</item>
 
     </string-array>
+    <string name="title_activity_learn">learn</string>
+    <string name="title_activity_azimuth_view">azimuth_view</string>
+    <string name="title_activity_latitude_view">latitude_view</string>
+    <string name="title_activity_game">Game</string>
+    <string name="title_activity_story_list">story_list</string>
+    <string name="title_activity_stry_one">stry_one</string>
+    <string name="title_activity_story_two">story_two</string>
 
 </resources>

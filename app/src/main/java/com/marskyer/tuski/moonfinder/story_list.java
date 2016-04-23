@@ -11,47 +11,41 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class appmenu extends Activity {
-Button moonTrack,Features,Game;
+public class story_list extends Activity {
+ Button st1,st2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-
-        moonTrack= (Button) findViewById(R.id.btn_mntrack);
-        Features= (Button) findViewById(R.id.btn_features);
-        Game= (Button) findViewById(R.id.btn_game);
+        setContentView(R.layout.activity_story_list);
 
 
-        moonTrack.setOnClickListener(new View.OnClickListener() {
+
+    st1 = (Button) findViewById(R.id.stry1);
+
+        st2 = (Button) findViewById(R.id.stry2);
+
+        st1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(appmenu.this, compass.class);
+                Intent intent = new Intent(story_list.this, stry_one.class);
+                startActivity(intent);
+            }
+        });
+        st2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(story_list.this, story_two.class);
                 startActivity(intent);
             }
         });
 
 
-        Features.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(appmenu.this, features_menu.class);
-                startActivity(intent);
-            }
-        });
 
-        Game.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(appmenu.this, Game.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 

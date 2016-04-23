@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/backgrnd"
+    tools:context="com.marskyer.tuski.moonfinder.story_one">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/imageView11"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/stry1"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="One day, Sun, Moon, and Wind went out to dine with their uncle and aunt, Thunder and Lightning. Their mother, a distant star, waited for their return. Both Sun and Wind were greedy and selfish. They enjoyed the meal but brought back nothing for their mother. But the gentle Moon removed a portion of food and kept it under her beautiful, long fingernails to share it with her mother.
+When they returned home, their mother asked them what they had got for her. Sun and Wind promptly replied that they had got nothing since they had gone for their own enjoyment. But Moon gave her mother the delicious food that she had brought for her.
+The mother was angry with Sun and Wind for their selfishness and cursed them. That’s why the sun is hated in hot weather and the wind is so disagreeable but the moon was blessed with good wishes. That is why she is always beautiful and cool.
+"
+        android:id="@+id/textView5"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/imageView11"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="47dp" />
+</RelativeLayout>

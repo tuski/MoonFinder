@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class features_menu extends Activity {
-
+Button learn,video,fav;
+    ImageButton story;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //full screen
@@ -21,6 +23,30 @@ public class features_menu extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_features_menu);
+
+learn = (Button) findViewById(R.id.lern_btn);
+story= (ImageButton) findViewById(R.id.story_btn);
+        video = (Button) findViewById(R.id.btn_video);
+
+
+        learn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(features_menu.this, learn.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        story.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(features_menu.this, story_list.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         /*
@@ -45,6 +71,9 @@ public class features_menu extends Activity {
         getApplicationContext().startActivity(intent);
 
     }
+
+
+
 
 
 }
