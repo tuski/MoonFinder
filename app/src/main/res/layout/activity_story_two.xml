@@ -19,13 +19,15 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView" >
+        android:id="@+id/scrollView"
+        android:layout_marginTop="235dp">
 
-    </ScrollView>
+
+
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="526dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="
 One day, the Sun and the Moon had a quarrel as to who was the stronger of the two.The two argued with each other for ages and finally the Sun declared that the Moon could not shine if the Sun’s light did not fall on it and illuminate it. To prove his might and utility, the Moon proudly replied, “You burn the earth with your heat and give light, but when I shine at night women come outdoors to spin in the moonlight.”
@@ -38,5 +40,5 @@ It is believed that since then the Moon has dark spots on its face, where the Su
         android:layout_below="@+id/imageView11"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
+    </ScrollView>
 </RelativeLayout>

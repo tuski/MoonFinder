@@ -19,10 +19,9 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView" >
+        android:id="@+id/scrollView"
+        android:layout_marginTop="235dp">
 
-
-    </ScrollView>
 
     <TextView
         android:layout_width="match_parent"
@@ -38,4 +37,7 @@ The mother was angry with Sun and Wind for their selfishness and cursed them. Th
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="47dp" />
+
+    </ScrollView>
+
 </RelativeLayout>
